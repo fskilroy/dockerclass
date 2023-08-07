@@ -9,3 +9,15 @@ script:
   - docker run -e CI=true fskilroy/dockerclass npm run test
 
   
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-app"
+  env: "Docker-app-env"
+  bucket_name: "elasticbeanstalk-us-east-1-520958113636"
+  bucket_path: "docker-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_ACCESS_KEY"
+  
